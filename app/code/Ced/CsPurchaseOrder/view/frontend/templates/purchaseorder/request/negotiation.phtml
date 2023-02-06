@@ -1,0 +1,238 @@
+<?php
+/**
+ * CedCommerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End User License Agreement (EULA)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * https://cedcommerce.com/license-agreement.txt
+ *
+ * @category    Ced
+ * @package     Ced_CsPurchaseOrder
+ * @author        CedCommerce Core Team <connect@cedcommerce.com>
+ * @copyright   Copyright CedCommerce (https://cedcommerce.com/)
+ * @license      https://cedcommerce.com/license-agreement.txt
+ */
+
+/** @var \Ced\CsPurchaseOrder\Block\Request\Negotiation $block */
+use Ced\CsPurchaseOrder\Model\Quote\Source\Users;
+?>
+<form class="form-addres" action="<?= /* @escapeNotVerified */
+$block->getSaveUrl() ?>" method="post" onsubmit="return validateimage()" id="form-validate"
+      enctype="multipart/form-data" data-hasrequired="<?= /* @escapeNotVerified */
+__('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+    <fieldset class="fieldset">
+        <legend class="legend"><span><?= /* @escapeNotVerified */
+                __('Product Information') ?></span></legend>
+        <br>
+        <div class="field Product_information">
+            <span><b><?= /* @escapeNotVerified */
+                    __('Product Name :') ?></b></span>
+            <a href="<?= $block->isConfigurableProduct($this->getNegotiationInfo()->getProductId())->getProductUrl() ?>">
+                <?= $this->getNegotiationInfo()->getProductName() ?>
+            </a>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset" id="fieldset">
+        <legend class="legend"><span><?= /* @escapeNotVerified */
+                __('Negotiation Information') ?></span></legend>
+        <br>
+
+        <div generated="true" class="image-error" id="images-errors-upload" style="display:none;">This is a required field.</div>
+
+        <div class="field customer_id">
+            <div class="control">
+                <input type="hidden" name="customer_id" value="<?= $block->getCustomerId() ?>"
+                       title="<?= /* @escapeNotVerified */
+                       __('Customer Id') ?>" id="customer_id">
+            </div>
+        </div>
+        <div class="field quote_id">
+            <div class="control">
+                <input type="hidden" name="quote_id" value="<?= $block->getQuoteId() ?>"
+                       title="<?= /* @escapeNotVerified */
+                       __('Quote Id') ?>" id="quote_id">
+            </div>
+        </div>
+        <div class="field vendor_id">
+            <div class="control">
+                <input type="hidden" name="vendor_id" value="<?= $block->getVendorId() ?>"
+                       title="<?= /* @escapeNotVerified */
+                       __('Vendor Id') ?>" id="vendor_id">
+            </div
+        </div>
+        <div class="field product_id">
+            <div class="control">
+                <input type="hidden" name="product_id" value="<?= $block->getNegotiationInfo()->getProductId() ?>"
+                       title="<?= /* @escapeNotVerified */
+                       __('Product Id') ?>" id="product_id">
+            </div>
+        </div>
+
+        <div class="field qty required" >
+            <label class="label" for="proposed_qty"><span><?= /* @escapeNotVerified */
+                    __('Negotiation Quantity') ?></span></label>
+            <div class="control">
+                <input type="text" name="n_qty" value="<?= $block->getNegotiationInfo()->getNegotiationQty() ?>"
+                       title="<?= /* @escapeNotVerified */
+                       __('Negotiation Quantity') ?>" id="qty"
+                       class="input-text required-entry validate-number"
+                    <?php if(!$this->canSubmit()) { ?> disabled <?php } ?>>
+            </div>
+        </div>
+
+        <div class="field price required">
+            <label class="label" for="preferred_price_per_qty"><span><?= /* @escapeNotVerified */
+                    __('Negotiation Price') ?></span></label>
+            <div class="control">
+                <input type="text" name="n_price"
+                       value="<?= round($block->getNegotiationInfo()->getNegotiationPrice(), 2) ?>"
+                       title="<?= /* @escapeNotVerified */
+                       __('Negotiation Price') ?>" class="required-entry validate-number validate-greater-than-zero"
+                       id="price" <?php if(!$this->canSubmit()) {?> disabled <?php }?>>
+            </div>
+        </div>
+        <?php
+        $commentshistory = $block->getCommentHistory();
+
+        if ($commentshistory && count($commentshistory) > 0 && !empty($commentshistory->getData())) {
+            ?>
+            <div class="order-history-block" id="history_form">
+                <div class="admin__field">
+                    <label for="history_comment" class="admin__field-label">
+                        <?= __('Chat History') ?>
+                    </label>
+                </div>
+                <div class="ui-wrapper order-items">
+                    <ul class="note-list">
+                        <?php foreach ($commentshistory as $_commenthistory) { ?>
+                            <?php if ($_commenthistory->getWhoIs() == Users::CUSTOMER) { ?>
+                                <?php if ($_commenthistory) { ?>
+                                    <li class="purchaseorder-left-chat-column">
+                                    <span class="purchaseorder-left-chat-column-date"><?= __('Me') ?></span>
+                                    <span class="separator">|</span>
+                                    <span class="purchaseorder-left-chat-column-date">
+                                    <?= $this->formatDate($_commenthistory
+                                        ->getCreatedAt(), \IntlDateFormatter::MEDIUM) ?>
+                                </span>
+                                    <span class="purchaseorder-left-chat-column-date">
+                                    <?= $this->formatTime($_commenthistory
+                                        ->getCreatedAt(), \IntlDateFormatter::MEDIUM) ?>
+                                </span>
+                                    <span class="separator">|</span>
+                                    <span class="purchaseorder-left-chat-column-sender">
+	                                <strong><?php //?></strong>
+	                            </span>
+                                    <?php if ($_commenthistory) { ?>
+                                        <div class="purchaseorder-left-chat-column-chat">
+                                            <span><b>Negotiated Quantity:</b></span>
+                                            <?= $this->escapeHtml($_commenthistory
+                                                ->getNegotiationQty(), ['b', 'br', 'strong', 'i', 'u', 'a']) ?>
+
+                                        </div>
+                                        <div class="purchaseorder-left-chat-column-chat">
+                                            <span><b>Negotiated Price Per Quantity: </b></span>
+                                            <?= $this->escapeHtml($this
+                                                ->helper('Magento\Framework\Pricing\Helper\Data')
+                                                ->currency(round($_commenthistory->getNegotiationPrice(),
+                                                    2), true, false), ['b', 'br', 'strong', 'i', 'u', 'a']) ?>
+
+                                        </div>
+                                        <?php if($_commenthistory->getComments()){?>
+                                        <div class="purchaseorder-left-chat-column-chat">
+                                            <span><b>Comments: </b></span>
+                                            <?= $this->escapeHtml($_commenthistory
+                                                ->getComments(), ['b', 'br', 'strong', 'i', 'u', 'a']) ?>
+
+                                        </div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php } ?>
+                                </li>
+                            <?php } elseif ($_commenthistory->getWhoIs() == Users::VENDOR) { ?>
+                                <?php if ($_commenthistory) { ?>
+                                    <li class="purchaseorder-right-chat-column" >
+                                    <span class="purchaseorder-right-chat-column-date"><?= __('Vendor') ?></span>
+                                    <span class="separator">|</span>
+                                    <span class="purchaseorder-right-chat-column-date">
+                                    <?= $this->formatDate($_commenthistory
+                                        ->getCreatedAt(), \IntlDateFormatter::MEDIUM) ?>
+                                </span>
+                                    <span class="purchaseorder-right-chat-column-time">
+                                    <?= $this->formatTime($_commenthistory
+                                        ->getCreatedAt(), \IntlDateFormatter::MEDIUM) ?>
+                                </span>
+                                    <span class="separator">|</span>
+
+                                    <?php if ($_commenthistory) { ?>
+
+                                        <div class="note-list-comment">
+                                            <span><b>Negotiated Quantity:</b></span>
+                                            <?= $this->escapeHtml($_commenthistory
+                                                ->getNegotiationQty(), ['b', 'br', 'strong', 'i', 'u', 'a']) ?>
+                                        </div>
+
+                                        <div class="note-list-comment">
+                                            <span><b>Negotiated Price Per Quantity: </b></span>
+                                            <?= $this->escapeHtml($this
+                                                ->helper('Magento\Framework\Pricing\Helper\Data')
+                                                ->currency(round($_commenthistory->getNegotiationPrice(), 2),
+                                                    true, false), ['b', 'br', 'strong', 'i', 'u', 'a']) ?>
+                                        </div>
+
+                                        <?php if($_commenthistory->getComments()){?>
+                                        <div class="note-list-comment">
+                                            <span><b>Comments: </b></span>
+                                            <?= $this->escapeHtml($_commenthistory->getComments(),
+                                                ['b', 'br', 'strong', 'i', 'u', 'a']) ?>
+                                        </div>
+                                        <?php } ?>
+                                    <?php } ?>
+                                <?php } ?>
+                                </li>
+                            <?php } ?>
+                        <?php } ?>
+                    </ul>
+                </div>
+            </div>
+        <?php } ?>
+        <div class="field comments">
+            <label class="label" for="comments"><span><?= /* @escapeNotVerified */
+                    __('Comments') ?></span></label>
+            <div class="control">
+                <textarea name="comments" value="" maxlength="8000"
+                          title="<?= /* @escapeNotVerified */
+                          __('Comments') ?>"
+                          class="input-textarea" id="comments"></textarea>
+            </div>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar">
+        <div class="primary">
+            <button type="submit" class="action save primary" title="<?= /* @escapeNotVerified */
+            __('Submit Request') ?>" <?php if(!$this->canSubmit()) { ?> disabled <?php }?>>
+                <span><?= /* @escapeNotVerified */
+                    __('Submit Request') ?></span>
+            </button>
+        </div>
+    </div>
+</form>
+<style type="text/css">
+    .purchaseorder-left-chat-column {
+        width: 55%;
+        float: left;
+        background: none repeat scroll 0 0 #D3D3D3;
+        margin-bottom: 7px;
+        padding: 6px 13px;
+    }
+
+    .purchaseorder-right-chat-column {
+        width: 55%;
+        float: right;
+        background: none repeat scroll 0 0 #F3F3DF;
+        margin-bottom: 7px;
+        padding: 6px 13px;
+    }
+</style>
