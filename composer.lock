@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4e514c2c4fb6192d7e8ede683368e90",
+    "content-hash": "969d0b04b3548937225ad919feb87c8f",
     "packages": [
         {
             "name": "2tvenom/cborencode",
@@ -513,6 +513,366 @@
                 }
             ],
             "time": "2022-06-29T23:37:57+00:00"
+        },
+        {
+            "name": "ced/marketplace-basic",
+            "version": "6.0.49",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcommerce/marketplace-basic-magento.git",
+                "reference": "0c7163ee6cd4ddc53b6a559e93697768f406a272"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/marketplace-basic/0c7163ee6cd4ddc53b6a559e93697768f406a272.zip",
+                "reference": "0c7163ee6cd4ddc53b6a559e93697768f406a272"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-component",
+            "autoload": {
+                "files": [
+                    "src/module-csmarketplace/registration.php",
+                    "src/theme-csmarketplace/registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsMarketplace\\": "src/module-csmarketplace"
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Extension which will convert your magento 2 store in to multi-vendor marketplace.",
+            "time": "2022-09-07T08:04:03+00:00"
+        },
+        {
+            "name": "ced/module-cscommission",
+            "version": "1.0.9",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/vendor-commission-addon.git",
+                "reference": "ac79b54d7f01a394050c926bf6dfceb7a5d115bf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-cscommission/ac79b54d7f01a394050c926bf6dfceb7a5d115bf.zip",
+                "reference": "ac79b54d7f01a394050c926bf6dfceb7a5d115bf"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsCommission\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Enables admin to set commission vendor wise",
+            "time": "2022-09-21T03:59:11+00:00"
+        },
+        {
+            "name": "ced/module-csenhancement",
+            "version": "1.0.16",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2-csENhancement.git",
+                "reference": "14b1ef37a704a4203fb5a80a4d0a5d5792eb51f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csenhancement/14b1ef37a704a4203fb5a80a4d0a5d5792eb51f1.zip",
+                "reference": "14b1ef37a704a4203fb5a80a4d0a5d5792eb51f1"
+            },
+            "require": {
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsEnhancement\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Extension which will add enhncements to multi-vendor marketplace module.",
+            "time": "2022-09-21T04:02:33+00:00"
+        },
+        {
+            "name": "ced/module-csmultishipping",
+            "version": "1.0.23",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2.2-vendor-multishipping-addon.git",
+                "reference": "a69b8ab794af935641bd06b359235f7b11fdc439"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csmultishipping/a69b8ab794af935641bd06b359235f7b11fdc439.zip",
+                "reference": "a69b8ab794af935641bd06b359235f7b11fdc439"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsMultiShipping\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Enable shipping rate define functionality for Vendor",
+            "time": "2022-09-21T03:56:07+00:00"
+        },
+        {
+            "name": "ced/module-csorder",
+            "version": "3.0.13",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/vendor-order-addon.git",
+                "reference": "8d28d264889792f2ed775af3e870daefda11ab60"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csorder/8d28d264889792f2ed775af3e870daefda11ab60.zip",
+                "reference": "8d28d264889792f2ed775af3e870daefda11ab60"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsOrder\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Advance Order functionality for Vendor",
+            "time": "2022-09-21T04:11:43+00:00"
+        },
+        {
+            "name": "ced/module-csproassign",
+            "version": "1.0.10",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/vendor-product-assignment-addon.git",
+                "reference": "86a8bb15fff1aeb11141a15674ccf581e14b2368"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csproassign/86a8bb15fff1aeb11141a15674ccf581e14b2368.zip",
+                "reference": "86a8bb15fff1aeb11141a15674ccf581e14b2368"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsProAssign\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "To assign and remove products from vendors for admin",
+            "time": "2022-09-21T03:55:16+00:00"
+        },
+        {
+            "name": "ced/module-csproduct",
+            "version": "1.0.11",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2-vendor-product-addon-vr2.2.git",
+                "reference": "3152dbeac79c80a40ef2ad559efdfb42a9f12524"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csproduct/3152dbeac79c80a40ef2ad559efdfb42a9f12524.zip",
+                "reference": "3152dbeac79c80a40ef2ad559efdfb42a9f12524"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsProduct\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Advance product creation functionality for Vendor",
+            "time": "2022-09-21T03:49:48+00:00"
+        },
+        {
+            "name": "ced/module-cstablerateshipping",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2-vendor-table-rate-shipping-addon.git",
+                "reference": "e03cca3165caf2e023ceadebffc144decc5a92f3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-cstablerateshipping/e03cca3165caf2e023ceadebffc144decc5a92f3.zip",
+                "reference": "e03cca3165caf2e023ceadebffc144decc5a92f3"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsTableRateShipping\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Enable tablerate shipping functionality for vendor.",
+            "time": "2021-11-30T14:26:51+00:00"
+        },
+        {
+            "name": "ced/module-cstransaction",
+            "version": "3.0.11",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2.2-vendor-transaction-addon.git",
+                "reference": "36183973f3c745e1efc6da483a97365cd5eb4bee"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-cstransaction/36183973f3c745e1efc6da483a97365cd5eb4bee.zip",
+                "reference": "36183973f3c745e1efc6da483a97365cd5eb4bee"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsTransaction\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Advance transaction functionality for Vendor",
+            "time": "2022-09-21T04:09:15+00:00"
+        },
+        {
+            "name": "ced/module-csvendorproductattribute",
+            "version": "1.0.11",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2-vendor-product-attribute-addon-vr2.2.git",
+                "reference": "68657daa787dd408f82942e1b99de802b429fcaa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csvendorproductattribute/68657daa787dd408f82942e1b99de802b429fcaa.zip",
+                "reference": "68657daa787dd408f82942e1b99de802b429fcaa"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsVendorProductAttribute\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Product attribute creation functionality for vendor",
+            "time": "2022-09-21T03:57:52+00:00"
+        },
+        {
+            "name": "ced/module-csvendorreview",
+            "version": "1.0.13",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/vendor-review-rating-addon.git",
+                "reference": "3f31298ee3310c7da0cf7bc3f8462a0c712750db"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-csvendorreview/3f31298ee3310c7da0cf7bc3f8462a0c712750db.zip",
+                "reference": "3f31298ee3310c7da0cf7bc3f8462a0c712750db"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\CsVendorReview\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Give functionality to the customers to gives Reviews to the Vendors",
+            "time": "2022-09-21T03:54:24+00:00"
+        },
+        {
+            "name": "ced/module-vendorsociallogin",
+            "version": "1.0.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:cedcoss/m2-vendor-social-login.git",
+                "reference": "95c7de1daa79360033640ce4ff10e8def4468298"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.cedcommerce.com/zipball/ced/module-vendorsociallogin/95c7de1daa79360033640ce4ff10e8def4468298.zip",
+                "reference": "95c7de1daa79360033640ce4ff10e8def4468298"
+            },
+            "require": {
+                "magento/magento-composer-installer": "*",
+                "php": "~7.3.0|~7.4.0|~8.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Ced\\VendorsocialLogin\\": ""
+                }
+            },
+            "notification-url": "https://marketplace:uCJM7117wkSIc2SZFtm4@repo.cedcommerce.com/downloads/",
+            "description": "Social Login for Magento2. Help customers to login on magento2 store by using Facebook, Twitter, Google and Linkedin",
+            "time": "2022-09-21T03:51:44+00:00"
         },
         {
             "name": "christian-riesen/base32",
