@@ -98,6 +98,6 @@
         "magento-force": "override"
     },
     "scripts": {
-        "phpcs": "phpcs --standard=pipeline/tests/static/phpcs/ruleset.xml --extensions=php app/code"
+        "phpcs": "vendor/squizlabs/php_codesniffer/bin/phpcs --standard=pipeline/tests/static/phpcs/ruleset.xml --extensions=php app/code"
     }
 }
