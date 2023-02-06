@@ -1,0 +1,181 @@
+<?php
+/**
+ * CedCommerce
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the End User License Agreement (EULA)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * https://cedcommerce.com/license-agreement.txt
+ *
+ * @category    Ced
+ * @package     Ced_CsMarketplace
+ * @author      CedCommerce Core Team <connect@cedcommerce.com>
+ * @copyright   Copyright CedCommerce (https://cedcommerce.com/)
+ * @license      https://cedcommerce.com/license-agreement.txt
+ */
+// @codingStandardsIgnoreFile
+
+/** @var  $block \Ced\CsMarketplace\Block\Vreports\Vorders\ListOrders */
+$params = $this->customerSession->getData('vorders_reports_filter');
+$params["website_id"] = $this->_storeManager->getStore()->getWebsiteId();
+?>
+<form action="javascript:void( 0 );"
+	method="post"
+	id="report-form-validate" class="order-reports">
+<div class="col-md-12">
+	<h4 class="legend" ><?= __('Filter Report') ?>
+	</h4>
+	<div style="clear:both"></div>
+    <!-- Create Website filter -->
+    <div class="form-group col-md-3 rtl-active">
+        <label for="website_id"><?=__('Website:') ?></label>
+        <div class="input-box">
+            <?php
+            $websites = $block->getWebsites();
+            if (count($websites) > 1) {
+                $websiteId = $params['website_id'];
+                if (!$websiteId) {
+                    $websiteId = $block->getDefaultWebsiteId();
+                }
+                ?>
+                <select name="website_id" id="website_id" class="form-control">
+                    <?php foreach ($websites as $key => $website) { ?>
+                        <option value="<?= $key ?>"
+                            <?php if ($websiteId == $key) { ?>
+                                selected="selected"
+                            <?php } ?>>
+                            <?= $website ?>
+                        </option>
+                    <?php } ?>
+                </select>
+                <?php
+            } else {
+                $website = current($websites);
+                ?>
+                <input type="hidden" name="website_id" value="<?= array_key_first($websites) ?>" />
+                <span><?= reset($websites) ?></span>
+                <?php
+            }
+            ?>
+        </div>
+    </div>
+	<div class="form-group col-md-3 rtl-active">
+		<label><?= __('Period') ?>:</label>
+			<div class="input-box">
+				<select id="period" class="select form-control"
+				name="period">
+				<option <?= isset($params['period']) && $params['period']=='day'?"selected":"";?> value="day"><?= __('Day'); ?></option>
+				<option <?= isset($params['period']) && $params['period']=='month'?"selected":"";?> value="month"><?= __('Month'); ?></option>
+				<option <?= isset($params['period']) && $params['period']=='year'?"selected":"";?> value="year"><?= __('Year'); ?></option>
+			</select>
+		</div>
+	</div>
+<div class="form-group col-md-3 rtl-active">
+	<label ><?= __('Vendor Payment Status') ?>:</label>
+		<div class="input-box">
+			<select id="payment_state" name="payment_state" class="select form-control"
+			>
+			<option  <?= isset($params['payment_state']) && $params['payment_state']=="*"?> value="*"><?= __('All'); ?></option>
+			<option  <?= isset($params['payment_state']) && $params['payment_state']=\Ced\CsMarketplace\Model\Vorders::STATE_OPEN?"selected":"";?> value="<?= \Ced\CsMarketplace\Model\Vorders::STATE_OPEN ?>"><?= __('Pending'); ?></option>
+			<option  <?= isset($params['payment_state']) && $params['payment_state']==\Ced\CsMarketplace\Model\Vorders::STATE_PAID?"selected":"";?>  value="<?= \Ced\CsMarketplace\Model\Vorders::STATE_PAID ?>""><?= __('Paid'); ?></option>
+			<option  <?= isset($params['payment_state']) && $params['payment_state']==\Ced\CsMarketplace\Model\Vorders::STATE_CANCELED?"selected":"";?> value="<?= \Ced\CsMarketplace\Model\Vorders::STATE_CANCELED ?>""><?= __('Cancelled'); ?></option>
+		</select>
+	</div>
+</div>
+<?php
+$url = $block->getViewFileUrl('iamges/calendar.gif');
+?>
+<div class="form-group col-md-3 rtl-active">
+	<label class="required"><em>*</em><?= __('Start date') ?>:</label>
+	<div class="input-box" id="inputbox">
+		<input type="text" class="required required-entry input-text validate-date form-control"  name="from"
+		id="from" value="<?= isset($params['from']) && ($params['from']!="")?$params['from']:""; ?>"/>
+	</div>
+</div>
+<div class="form-group col-md-3 rtl-active">
+	<label class="required"><em>*</em><?= __('End date');  ?>:</label>
+	<div class="input-box" id="inputbox">
+		<input type="text" class="required required-entry input-text validate-date form-control"  name="to"
+		id="to" value="<?= isset($params['to']) && ($params['to']!="")?$params['to']:""; ?>"/>
+	</div>
+</div>
+</div>
+<script>
+	require([
+		"jquery",
+		"mage/calendar"
+		], function($){
+			$("#from").calendar({
+				buttonText:"<?= __('Select Date') ?>",
+			});
+		});
+	require([
+		"jquery",
+		"mage/calendar"
+		], function($){
+			$("#to").calendar({
+				buttonText:"<?= __('Select Date') ?>",
+			});
+		});
+	</script>
+	<div class="col-md-12">
+		<div class="button-set text-right">
+			<button class="button btn btn-warning uptransform"
+                    title="<?= __('Export') ?>"
+                    onClick="window.location='<?= $this->getUrl('*/*/ExportVordersCsv',array('_nosid'=>true))?>'"
+                    id="export_btn">
+				<span><span><?= __('Export') ?></span></span>
+			</button>
+			<button class="button btn btn-info uptransform" title="<?= __('Show Report') ?>" id="filter_butn">
+				<span><span><?= __('Show Report') ?></span></span>
+			</button>
+
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+    require(["jquery"], function ($) {
+        $(document).ready(function ()  {
+            $('#filter_butn').click(function () {
+                if ($('#report-form-validate').valid()) {
+                    filterVordersReports(0);
+                }else{
+                	return false;
+                }
+            });
+        });
+    });
+
+	function filterVordersReports(reset){
+		require(["jquery"], function ($) {
+	    	$('#activity-loading').show();
+	    	var reportForm = $("#report-form-validate");
+	        var ajaxUrl = "<?= $this->getUrl('csmarketplace/vreports/filtervorders/')  ?>";
+	        var params = reportForm.serialize();
+	        $.ajax({
+	            url: ajaxUrl,
+	            data:{"data":params},
+	            type:"POST",
+	            showLoader: true,
+	            success:function(transport){
+	                $('#csmarketplace-vreports-vorders').html(transport);
+	                $('#activity-loading').hide();
+	            }
+	        });
+	    });
+	}
+</script>
+<style>
+	label.required em, span.required em {
+		display: none;
+	}
+	label.required::after, span.required::after {
+		color: red;
+		content: " *";
+		font-family: "Helvetica Neue",Verdana,Arial,sans-serif;
+		font-size: 12px;
+		font-weight: normal;
+	}
+</style>

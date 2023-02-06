@@ -63,6 +63,8 @@ atlassian*
 /pub/media/sitemap/*
 !/pub/media/sitemap/.htaccess
 /pub/static/*
+/pub/media/ced
+/pub/var
 !/pub/static/.htaccess
 
 /var/*
