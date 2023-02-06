@@ -96,5 +96,8 @@
     },
     "extra": {
         "magento-force": "override"
+    },
+    "scripts": {
+        "phpcs": "phpcs --standard=pipeline/tests/static/phpcs/ruleset.xml --extensions=php app/code"
     }
 }
