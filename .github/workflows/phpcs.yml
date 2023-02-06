@@ -21,12 +21,11 @@ jobs:
           fetch-depth: 0 # important!
       - name: Add HTTP basic auth credentials
         run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
-      - name: Show auth.json
-        run: cat $GITHUB_WORKSPACE/auth.json
       - uses: php-actions/composer@v6
         with:
           dev: no
           args: --profile --ignore-platform-reqs
+          php_version: "8.1"
 
       - name: Composer install
         run: composer2 --version
