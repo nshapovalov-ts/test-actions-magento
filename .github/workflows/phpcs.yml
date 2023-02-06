@@ -20,6 +20,9 @@ jobs:
         with:
           fetch-depth: 0 # important!
       - uses: php-actions/composer@v6
+        with:
+          dev: no
+          args: --profile --ignore-platform-reqs
 
       - name: Composer install
         run: |
