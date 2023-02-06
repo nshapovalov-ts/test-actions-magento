@@ -1,1 +1,0 @@
-# Cedcommerce Marketplace Basic
