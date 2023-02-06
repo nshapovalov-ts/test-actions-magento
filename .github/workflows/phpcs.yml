@@ -26,7 +26,7 @@ jobs:
           dev: no
           args: --profile --ignore-platform-reqs
           php_version: "8.1"
-          env:
-            COMPOSER_AUTH: '{"http-basic": {"repo.cedcommerce.com": {"username": "marketplace","password": "uCJM7117wkSIc2SZFtm4"}}}'
+        env:
+          COMPOSER_AUTH: '{"http-basic": {"repo.cedcommerce.com": {"username": "marketplace","password": "uCJM7117wkSIc2SZFtm4"}}}'
       - name: Composer install
         run: composer2 --version
