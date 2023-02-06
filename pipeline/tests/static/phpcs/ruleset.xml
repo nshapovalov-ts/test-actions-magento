@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @copyright   Copyright (c) 2022 TRADESQUARE PTY LTD (www.tradesquare.com.au)
+ * @author      Nikolay Shapovalov <nikolay@tradesquare.com.au>
+ */
+ -->
+<ruleset name="Magento2">
+    <description>Magento coding standard.</description>
+    <rule ref="../../../../vendor/magento/magento-coding-standard/Magento2"/>
+    <!-- Exclude _files, unit tests and registration from validation -->
+    <exclude-pattern>*/_files/*</exclude-pattern>
+    <exclude-pattern>*/Test/*</exclude-pattern>
+    <exclude-pattern>*Test.php</exclude-pattern>
+    <exclude-pattern>*/registration.php</exclude-pattern>
+    <rule ref="PSR2.Classes.ClassDeclaration.MultipleClasses">
+        <severity>0</severity>
+    </rule>
+</ruleset>
