@@ -27,4 +27,5 @@ jobs:
         env:
           COMPOSER_AUTH: '{"http-basic": {"repo.magento.com": {"username": "0ac2a9f452e7f5a52702faad45998613","password": "9e74499935d0658962b88651d60f6b0d"},"repo.cedcommerce.com": {"username": "marketplace","password": "uCJM7117wkSIc2SZFtm4"}}}'
       - name: Run code sniffer
-        run: vendor/squizlabs/php_codesniffer/bin/phpcs --standard=pipeline/tests/static/phpcs/ruleset.xml --extensions=php app/code
+        run: squizlabs/php_codesniffer/bin/phpcs --standard=pipeline/tests/static/phpcs/ruleset.xml --extensions=php ../app/code
+        working-directory: vendor
