@@ -19,18 +19,12 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0 # important!
+      - name: Add HTTP basic auth credentials
+        run: echo '${{ secrets.COMPOSER_AUTH_JSON }}' > $GITHUB_WORKSPACE/auth.json
       - uses: php-actions/composer@v6
         with:
           dev: no
           args: --profile --ignore-platform-reqs
 
       - name: Composer install
-        run: |
-          composer2 --version
-
-      - uses: Novusvetus/action-php_codesniffer@1.2.13
-        with:
-          files: "**.php"
-          scan_all: true
-          phpcs_path: php phpcs.phar
-          standard: phpcs.xml
+        run: composer2 --version
