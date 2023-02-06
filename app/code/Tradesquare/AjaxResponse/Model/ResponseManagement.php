@@ -19,6 +19,9 @@ use Magento\Framework\Phrase;
 /**
  * Class ResponseManagement
  */
+
+
+
 class ResponseManagement
 {
     /**
@@ -30,6 +33,7 @@ class ResponseManagement
     public function __construct(
         private readonly ResultFactory $resultFactory,
         private readonly ManagerInterface $messageManager
+
     ) {
     }
 
@@ -42,6 +46,9 @@ class ResponseManagement
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function success(
+
+
+
         array $data = [],
         ?Phrase $successMessage = null,
         bool $updateMessageManager = false
@@ -59,16 +66,12 @@ class ResponseManagement
         return $this->getJsonResult($responseData);
     }
 
-    /**
-     * Send Fail Response
-     *
-     * @param \Magento\Framework\Phrase $errorMessage
-     * @param bool $updateMessageManager
-     * @param array $data
-     * @return \Magento\Framework\Controller\ResultInterface
-     */
+
     public function fail(Phrase $errorMessage, bool $updateMessageManager = false, array $data = []): ResultInterface
     {
+
+
+
         $responseData = [
             'is_success' => false,
             'response_data' => $data,
@@ -96,13 +99,12 @@ class ResponseManagement
         return $resultJson;
     }
 
-    /**
-     * Add Error Message to MessageManager
-     *
-     * @param \Magento\Framework\Phrase|null $message
-     */
+
     private function updateErrorMessageManager(?Phrase $message): void
     {
+
+
+
         $this->messageManager->addErrorMessage($message);
     }
 
