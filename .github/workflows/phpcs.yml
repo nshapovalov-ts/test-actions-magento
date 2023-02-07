@@ -27,7 +27,7 @@ jobs:
         env:
           COMPOSER_AUTH: '{"http-basic": {"repo.magento.com": {"username": "0ac2a9f452e7f5a52702faad45998613","password": "9e74499935d0658962b88651d60f6b0d"},"repo.cedcommerce.com": {"username": "marketplace","password": "uCJM7117wkSIc2SZFtm4"}}}'
       - name: Install PHP_CodeSniffer
-          run: |
+        run: |
             curl -OL https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
             php phpcs.phar --version
       - name: Run phpcs
