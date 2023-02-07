@@ -1,30 +1,15 @@
-name: "CI"
-
-on:
-  push:
-    paths:
-      - "**.php"
-      - "phpcs.xml"
-      - ".github/workflows/phpcs.yml"
-  pull_request:
-    paths:
-      - "**.php"
-      - "phpcs.xml"
-      - ".github/workflows/phpcs.yml"
+name: Codesniffer with the Magento Coding standard
+on: [push, pull_request]
 
 jobs:
-  phpcs:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0 # important!
-      - uses: php-actions/composer@v6
-        with:
-          dev: no
-          args: --profile --ignore-platform-reqs
-          php_version: "8.1"
-        env:
-          COMPOSER_AUTH: '{"http-basic": {"repo.magento.com": {"username": "0ac2a9f452e7f5a52702faad45998613","password": "9e74499935d0658962b88651d60f6b0d"},"repo.cedcommerce.com": {"username": "marketplace","password": "uCJM7117wkSIc2SZFtm4"}}}'
-      - name: Run code sniffer
-        run: php vendor/bin/phpcs --standard=pipeline/tests/static/phpcs/ruleset.xml --extensions=php app/code
+      - uses: actions/checkout@v2
+
+      - name: Run codesniffer
+        run:
+          docker run
+          --volume $(pwd)/:/app/code
+          michielgerritsen/magento-coding-standard:latest
+          --severity=6
